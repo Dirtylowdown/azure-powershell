@@ -20,11 +20,18 @@ Start-AzSpringCloudAppDeploymentJfr -AppName <String> -Name <String> -ResourceGr
  [<CommonParameters>]
 ```
 
-### StartViaIdentityExpanded
+### StartViaJsonFilePath
 ```
-Start-AzSpringCloudAppDeploymentJfr -InputObject <ISpringCloudIdentity> [-AppInstance <String>]
- [-Duration <String>] [-FilePath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzSpringCloudAppDeploymentJfr -AppName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StartViaJsonString
+```
+Start-AzSpringCloudAppDeploymentJfr -AppName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +60,7 @@ App instance name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StartExpanded
 Aliases:
 
 Required: False
@@ -68,7 +75,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -115,7 +122,7 @@ Duration of your JFR.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StartExpanded
 Aliases:
 
 Required: False
@@ -130,7 +137,7 @@ Your target file path in your own BYOS
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StartExpanded
 Aliases:
 
 Required: False
@@ -140,19 +147,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Start operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
-Parameter Sets: StartViaIdentityExpanded
+Type: System.String
+Parameter Sets: StartViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Start operation
+
+```yaml
+Type: System.String
+Parameter Sets: StartViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -161,7 +182,7 @@ The name of the Deployment resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -207,7 +228,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -222,7 +243,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -238,7 +259,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -283,8 +304,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 
 ## OUTPUTS
 

@@ -21,12 +21,13 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 Create an in-memory object for JarUploadedUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentJarUploadedObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudappdeploymentjaruploadedobject
 #>
 function New-AzSpringCloudAppDeploymentJarUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,8 +43,7 @@ function New-AzSpringCloudAppDeploymentJarUploadedObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo]::New()
-        $Object.Type = 'Jar'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo]::New()
         $Object.RelativePath = '<default>'
 
         if ($PSBoundParameters.ContainsKey('JvmOption')) {

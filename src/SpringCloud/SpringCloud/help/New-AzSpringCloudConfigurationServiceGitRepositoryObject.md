@@ -1,7 +1,7 @@
 ---
 external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
-online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudConfigurationServiceGitRepositoryObject
+online version: https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudconfigurationservicegitrepositoryobject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Create an in-memory object for ConfigurationServiceGitRepository.
 ```
 New-AzSpringCloudConfigurationServiceGitRepositoryObject -Label <String> -Name <String> -Pattern <String[]>
  -Uri <String> [-HostKey <String>] [-HostKeyAlgorithm <String>] [-Password <String>] [-PrivateKey <String>]
- [-SearchPath <String[]>] [-StrictHostKeyChecking <Boolean>] [-Username <String>] [<CommonParameters>]
+ [-SearchPath <String[]>] [-StrictHostKeyChecking <Boolean>] [-Username <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,6 +144,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SearchPath
 Searching path of the repository.
 
@@ -210,10 +226,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ConfigurationServiceGitRepository
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigurationServiceGitRepository
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

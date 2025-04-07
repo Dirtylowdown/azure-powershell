@@ -21,12 +21,13 @@ Create an in-memory object for GitPatternRepository.
 Create an in-memory object for GitPatternRepository.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.GitPatternRepository
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.GitPatternRepository
 .Link
-https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-AzSpringCloudGitPatternRepositoryObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudgitpatternrepositoryobject
 #>
 function New-AzSpringCloudGitPatternRepositoryObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.GitPatternRepository')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.GitPatternRepository')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -66,7 +67,7 @@ function New-AzSpringCloudGitPatternRepositoryObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.GitPatternRepository]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.GitPatternRepository]::New()
 
         if ($PSBoundParameters.ContainsKey('HostKey')) {
             $Object.HostKey = $HostKey

@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the SpringCloud service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -53,41 +52,37 @@ input-file:
     
 title: SpringCloud
 module-version: 0.1.0
-resourcegroup-append: true
-nested-object-to-string: true
-identity-correction-for-post: true
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+disable-transform-identity-type-for-operation:
+  - Apps_Update
 
 directive:
-  - where:
-      verb: Set
-      subject: BuildServiceAgentPoolPut
-    set:
-      verb: New
-      subject: BuildServiceAgentPool
+  # - where:
+  #     verb: Set
+  #     subject: BuildServiceAgentPoolPut
+  #   set:
+  #     verb: New
+  #     subject: BuildServiceAgentPool
 
-  - where:
-      verb: Set
-      subject: AppActiveDeployment
-    set:
-      verb: Update
-      subject: AppActiveDeployment
+  # - where:
+  #     verb: Set
+  #     subject: AppActiveDeployment
+  #   set:
+  #     verb: Update
+  #     subject: AppActiveDeployment
 
-  - where:
-      verb: Set
-    remove: true
+  # - where:
+  #     verb: Set
+  #   remove: true
   # First rename parameter of the Get-AzSpringCloudService, then rename cmdlet to Get-AzSpringCloud.
   - where: 
       subject: ^Service$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 
   - where: 
       subject: ^Service$
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^CreateViaIdentity.*$
     remove: true
 
   - where: 
@@ -113,7 +108,7 @@ directive:
       parameter-name: NetworkProfileServiceRuntimeSubnetId
     set:
       parameter-name: NetworkProfileServiceSubnetId
-  # Customization for add default locatio value when not pass location parameter
+  # Customization for add default location value when not pass location parameter
   - where:
       verb: New
       subject: ^Service$
@@ -187,69 +182,63 @@ directive:
 # remove variant
 # |Certificate|ConfigurationService
   - where: 
-      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^|BuildpackBinding$|^BuildServiceBuild$|^BuildServiceBuilder$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^|BuildpackBinding$|^BuildServiceBuild$|^BuildServiceBuilder$|^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^TestKey$
+      variant: ^(Create|Update|Generate)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where: 
-      subject: ^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^TestKey$
-      variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
+      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^|BuildpackBinding$|^BuildServiceBuild$|^BuildServiceBuilder$|^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^TestKey$
+      variant: ^CreateViaIdentity.*$
     remove: true
   
-  - where:
-      verb: Get
-      subject: BuildServiceBuildResultLog
-      variant: GetViaIdentity
-    remove: true
+  # - where:
+  #     verb: Get
+  #     subject: BuildServiceBuildResultLog
+  #     variant: GetViaIdentity
+  #   remove: true
 
   - where:
       verb: Get
       subject: ^Registry$|^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
-      variant: List
+      variant: List|^GetViaIdentitySpring$
     remove: true
     
 
   - where: 
       subject: ^TestKey$
-      variant: ^Regenerate$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
+      variant: ^Regenerate(?!.*?(Expanded|JsonFilePath|JsonString)) #|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
     remove: true
 
-  - where: 
-      subject: ^AppActiveDeployment$
-      variant: ^SetViaIdentity$|^Set$
-    remove: true
+  # - where: 
+  #     subject: ^AppActiveDeployment$
+  #     variant: ^SetViaIdentity$|^Set$
+  #   remove: true
 
   - where: 
       subject: ^DeploymentJfr$
-      variant: ^Start$|^StartViaIdentity$
+      variant: ^Start(?!.*?(Expanded|JsonFilePath|JsonString)) #|^StartViaIdentity$
     remove: true
 
   - where:
       verb: Test 
-      subject: ^AppCustomDomain$
-      variant: ^Validate$|^ValidateViaIdentity$
-    remove: true
-
-  - where:
-      verb: Test 
-      subject: ^ConfigServer$|^ConfigurationService$
-      variant: ^Validate$|^ValidateViaIdentity$
+      subject: ^AppCustomDomain$|^ConfigServer$|^ConfigurationService$
+      variant: ^(Validate)(?!.*?(Expanded|JsonFilePath|JsonString))|^ValidateViaIdentity.*$
     remove: true
 
   - where:
       verb: Test 
       subject: ^NameAvailability$
-      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      variant: ^(Check)(?!.*?Expanded)|^CheckViaIdentityExpanded$|^CheckViaIdentity.*$
     remove: true
 
   - where:
       subject: ^AppDeploymentJfr$
-      variant: ^Start$|^StartViaIdentity$
+      variant: ^(Start)(?!.*?Expanded)$|^StartViaIdentity.*$
     remove: true
 
-  - where: 
-      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^ConfigServer$|^MonitoringSetting$|^BuildServiceAgentPool$
-      variant: ^Update$|^UpdateViaIdentity$
-    remove: true
+  # - where: 
+  #     subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^ConfigServer$|^MonitoringSetting$|^BuildServiceAgentPool$
+  #     variant: ^Update$|^UpdateViaIdentity$
+  #   remove: true
 
 # rename parameter
   - where:
@@ -433,7 +422,7 @@ directive:
       subject: ^BuildServiceBuildResultLog$
     hide: true
 
-  # Customization for add default locatio value when not pass location parameter
+  # Customization for add default location value when not pass location parameter
   - where:
       verb: New
       subject: ^App$
@@ -540,21 +529,29 @@ directive:
     - CertificateProperties
 
   - model-cmdlet:
-      # - BuildpacksGroupProperties
-      # - BuildpackProperties
-      - ConfigurationServiceGitRepository
-      - GitPatternRepository
-      # - KeyVaultCertificateProperties
-      # - ContentCertificateProperties
-    # - LoadedCertificate
-    # --> rename  New-AzSpringCloudLoadedCertificateObject New-AzSpringCloudAppLoadedCertificateObject
-    # - JarUploadedUserSourceInfo
-    # --> rename New-AzSpringCloudDeploymentJarUploadedObject --> New-AzSpringCloudAppDeploymentJarUploadedObject
-    # - NetCoreZipUploadedUserSourceInfo
-    # --> rename New-AzSpringCloudDeploymentNetCoreZipUploadedObject --> New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
-    # - SourceUploadedUserSourceInfo
-    # --> rename New-AzSpringCloudDeploymentSourceUploadedObject --> New-AzSpringCloudAppDeploymentSourceUploadedObject
-      # - BuildResultUserSourceInfo --> New-AzSpringCloudAppDeploymentBuildResultObject
+    - model-name: BuildpacksGroupProperties
+      cmdlet-name: New-AzSpringCloudBuildpacksGroupObject
+    - model-name: BuildpackProperties
+      cmdlet-name: New-AzSpringCloudBuildpackObject
+    - model-name: ConfigurationServiceGitRepository
+    - model-name: GitPatternRepository
+    - model-name: ContentCertificateProperties
+      cmdlet-name: New-AzSpringCloudContentCertificateObject
+    - model-name: LoadedCertificate
+      cmdlet-name: New-AzSpringCloudAppLoadedCertificateObject
+    # Customized parameter names
+    # - model-name: KeyVaultCertificateProperties 
+    #   cmdlet-name: New-AzSpringCloudKeyVaultCertificateObject
+    # Customized RelativePath with '<default>' value
+    # - model-name: JarUploadedUserSourceInfo
+    #   cmdlet-name: New-AzSpringCloudAppDeploymentJarUploadedObject
+    # - model-name: NetCoreZipUploadedUserSourceInfo
+    #   cmdlet-name: New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
+    # - model-name: SourceUploadedUserSourceInfo
+    #   cmdlet-name: New-AzSpringCloudAppDeploymentSourceUploadedObject
+    # Customized BuildResultId with '<default>' value
+    # - model-name: BuildResultUserSourceInfo
+    #   cmdlet-name: New-AzSpringCloudAppDeploymentBuildResultObject
 
   - where:
       subject-prefix: SpringCloud

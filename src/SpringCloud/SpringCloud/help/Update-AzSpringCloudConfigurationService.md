@@ -1,47 +1,65 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
-online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildserviceagentpool
+online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudconfigurationservice
 schema: 2.0.0
 ---
 
-# New-AzSpringCloudBuildServiceAgentPool
+# Update-AzSpringCloudConfigurationService
 
 ## SYNOPSIS
-Create or update build service agent pool.
+update the default Application Configuration Service or update the existing Application Configuration Service.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-PoolSizeName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] [-GitRepository <IConfigurationServiceGitRepository[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-New-AzSpringCloudBuildServiceAgentPool -InputObject <ISpringCloudIdentity> [-PoolSizeName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSpringCloudConfigurationService -InputObject <ISpringCloudIdentity>
+ [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpringExpanded
+```
+Update-AzSpringCloudConfigurationService -SpringInputObject <ISpringCloudIdentity>
+ [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update build service agent pool.
+update the default Application Configuration Service or update the existing Application Configuration Service.
 
 ## EXAMPLES
 
-### Example 1: Create or update build service agent pool
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName springcloudrg -ServiceName espring-pwsh01 -PoolSizeName "S1"
+{{ Add code here }}
 ```
 
 ```output
-Name        ResourceGroupName ProvisioningState StackId                     StackVersion
-----        ----------------- ----------------- -------                     ------------
-builderfull springcloudrg     Succeeded         io.buildpacks.stacks.bionic full
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create or update build service agent pool.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -76,9 +94,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GitRepository
+Repositories of Application Configuration Service git property.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigurationServiceGitRepository[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -107,13 +139,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolSizeName
-The name of build service agent pool size
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
+Aliases: proga
 
 Required: False
 Position: Named
@@ -150,6 +182,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -209,9 +256,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildServiceAgentPoolResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigurationServiceResource
 
 ## NOTES
 
 ## RELATED LINKS
-

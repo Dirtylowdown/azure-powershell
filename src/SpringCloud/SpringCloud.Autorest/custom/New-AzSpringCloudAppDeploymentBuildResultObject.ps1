@@ -21,12 +21,13 @@ Create an in-memory object for BuildResultUserSourceInfo.
 Create an in-memory object for BuildResultUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildResultUserSourceInfo
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentBuildResultObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudappdeploymentbuildresultobject
 #>
 function New-AzSpringCloudAppDeploymentBuildResultObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildResultUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
         [Parameter(HelpMessage="Version of the source.")]
@@ -35,8 +36,7 @@ function New-AzSpringCloudAppDeploymentBuildResultObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo]::New()
-        $Object.Type = "BuildResult"
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildResultUserSourceInfo]::New()
         $Object.BuildResultId = '<default>'
         if ($PSBoundParameters.ContainsKey('BuildResultId')) {
             $Object.BuildResultId = $BuildResultId

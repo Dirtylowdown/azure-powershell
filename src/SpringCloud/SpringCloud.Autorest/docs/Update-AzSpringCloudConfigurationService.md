@@ -1,62 +1,64 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudappactivedeployment
+online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudconfigurationservice
 schema: 2.0.0
 ---
 
-# Update-AzSpringCloudAppActiveDeployment
+# Update-AzSpringCloudConfigurationService
 
 ## SYNOPSIS
-Set existing Deployment under the app as active
+update the default Application Configuration Service or update the existing Application Configuration Service.
 
 ## SYNTAX
 
-### SetExpanded (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzSpringCloudAppActiveDeployment -Name <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-DeploymentName <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentityExpanded
-```
-Update-AzSpringCloudAppActiveDeployment -InputObject <ISpringCloudIdentity> [-DeploymentName <String[]>]
+Update-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] [-GitRepository <IConfigurationServiceGitRepository[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Update-AzSpringCloudConfigurationService -InputObject <ISpringCloudIdentity>
+ [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpringExpanded
+```
+Update-AzSpringCloudConfigurationService -SpringInputObject <ISpringCloudIdentity>
+ [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Set existing Deployment under the app as active
+update the default Application Configuration Service or update the existing Application Configuration Service.
 
 ## EXAMPLES
 
-### Example 1: Set existing Deployment under the app as active
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSpringCloudAppActiveDeployment -ResourceGroupName springcloudrg -ServiceName standardspring-demo -Name demo -DeploymentName 'green'
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Set existing Deployment under the app as active.
+{{ Add description here }}
 
-### Example 2: Set existing Deployment under the app as active by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringCloudApp -ResourceGroupName springcloudrg -ServiceName standardspring-demo -Name demo | Update-AzSpringCloudAppActiveDeployment -DeploymentName 'green'
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Set existing Deployment under the app as active by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -91,11 +93,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentName
-Collection of Deployment name.
+### -GitRepository
+Repositories of Application Configuration Service git property.
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigurationServiceGitRepository[]
 Parameter Sets: (All)
 Aliases:
 
@@ -108,32 +110,16 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
-Parameter Sets: SetViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the App resource.
-
-```yaml
-Type: System.String
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -158,7 +144,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -173,7 +159,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -183,13 +169,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -239,7 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigurationServiceResource
 
 ## NOTES
 

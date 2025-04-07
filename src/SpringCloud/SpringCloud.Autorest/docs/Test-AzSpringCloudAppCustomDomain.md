@@ -19,10 +19,18 @@ Test-AzSpringCloudAppCustomDomain -AppName <String> -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### ValidateViaIdentityExpanded
+### ValidateViaJsonFilePath
 ```
-Test-AzSpringCloudAppCustomDomain -InputObject <ISpringCloudIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzSpringCloudAppCustomDomain -AppName <String> -ResourceGroupName <String> -ServiceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ValidateViaJsonString
+```
+Test-AzSpringCloudAppCustomDomain -AppName <String> -ResourceGroupName <String> -ServiceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +71,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -89,19 +97,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Validate operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
-Parameter Sets: ValidateViaIdentityExpanded
+Type: System.String
+Parameter Sets: ValidateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -110,7 +132,7 @@ Name to be validated
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: True
@@ -126,7 +148,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -141,7 +163,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -157,7 +179,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -203,11 +225,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICustomDomainValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICustomDomainValidateResult
 
 ## NOTES
 

@@ -21,12 +21,13 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSourceInfo
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudappdeploymentnetcorezipuploadedobject
 #>
 function New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,10 +43,8 @@ function New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo]::New()
-        $Object.Type = 'NetCoreZip'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSourceInfo]::New()
         $Object.RelativePath = '<default>'
-
         if ($PSBoundParameters.ContainsKey('MainEntryPath')) {
             $Object.NetCoreMainEntryPath = $MainEntryPath
         }
